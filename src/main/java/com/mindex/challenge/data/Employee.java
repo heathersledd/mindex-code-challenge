@@ -1,13 +1,24 @@
 package com.mindex.challenge.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents an employee within the organization.
+ * Contains data pertaining to name, position, department, and direct reports.
+ */
 public class Employee {
+
     private String employeeId;
+
     private String firstName;
+
     private String lastName;
+
     private String position;
+
     private String department;
+
     private List<Employee> directReports;
 
     public Employee() {
@@ -54,6 +65,10 @@ public class Employee {
     }
 
     public List<Employee> getDirectReports() {
+        // Check for null here since there's no reason to have direct reports set to null vs empty list
+        if (directReports == null) {
+            directReports = new ArrayList<>();
+        }
         return directReports;
     }
 
