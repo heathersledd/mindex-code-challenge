@@ -29,7 +29,7 @@ public class CompensationServiceImpl implements CompensationService {
 
     @Override
     public Compensation getCompensation(String employeeId) {
-        LOG.debug("Getting compensation with employeeId [{}]", employeeId);
+        LOG.debug("Getting compensation for employee with employeeId [{}]", employeeId);
 
         Compensation compensation = compensationRepository.findByEmployeeId(employeeId);
         if (compensation == null) {

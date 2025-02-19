@@ -1,5 +1,6 @@
 package com.mindex.challenge.data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ public class Compensation {
 
     private String employeeId;
 
-    private int salary;
+    private BigDecimal salary;
 
     private Date effectiveDate;
 
@@ -24,11 +25,11 @@ public class Compensation {
         this.employeeId = employeeId;
     }
 
-    public int getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 
