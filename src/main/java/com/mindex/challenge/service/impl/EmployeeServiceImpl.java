@@ -1,7 +1,6 @@
 package com.mindex.challenge.service.impl;
 
 import com.mindex.challenge.dao.EmployeeRepository;
-import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.EmployeeService;
@@ -57,6 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public ReportingStructure getReportingStructure(String employeeId) {
         LOG.debug("Creating reporting structure for employee with id [{}]", employeeId);
 
+        // Validation check for employee
         Employee employee = employeeRepository.findByEmployeeId(employeeId);
         if (employee == null) {
             throw new RuntimeException("Invalid employeeId: " + employeeId);
@@ -65,6 +65,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return new ReportingStructure(employee, computeNumberOfReports(employeeId));
     }
 
+    // Helper method to compute the number of reports for an employee associated with the given employee id
     private int computeNumberOfReports(String employeeId) {
         // Base case, employee has no reports
         // Return, effectively ending recursive trail
