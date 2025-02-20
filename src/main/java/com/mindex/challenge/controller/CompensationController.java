@@ -19,6 +19,12 @@ public class CompensationController {
     @Autowired
     private CompensationService compensationService;
 
+    /**
+     * Retrieves compensation by employee id.
+     *
+     * @param employeeId The employee id of the employee associated with the compensation to retrieve.
+     * @return The compensation with the associated employee id
+     */
     @GetMapping("/compensation/{employeeId}")
     public Compensation getCompensation(@PathVariable String employeeId) {
         LOG.debug("Received compensation get request for employee with id [{}]", employeeId);
@@ -26,6 +32,12 @@ public class CompensationController {
         return compensationService.getCompensation(employeeId);
     }
 
+    /**
+     * Creates a new compensation.
+     *
+     * @param compensation The compensation object containing the new compensation data.
+     * @return The created compensation.
+     */
     @PostMapping("/compensation")
     public Compensation createCompensation(@RequestBody Compensation compensation) {
         LOG.debug("Received compensation create request for [{}]", compensation);

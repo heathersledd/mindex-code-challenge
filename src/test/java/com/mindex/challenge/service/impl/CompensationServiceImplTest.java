@@ -95,7 +95,7 @@ public class CompensationServiceImplTest {
         testCompensation.setEffectiveDate(LocalDate.now());
 
         // Assert that exception is thrown when invalid employee id is passed on compensation create
-        assertThrows(RuntimeException.class, () -> compensationService.createCompensation(testCompensation));
+        assertThrows(IllegalArgumentException.class, () -> compensationService.createCompensation(testCompensation));
     }
 
     @Test
