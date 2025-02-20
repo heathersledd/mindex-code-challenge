@@ -27,7 +27,7 @@ public class CompensationController {
     }
 
     @PostMapping("/compensation")
-    public Compensation createEmployee(@RequestBody Compensation compensation) {
+    public Compensation createCompensation(@RequestBody Compensation compensation) {
         LOG.debug("Received compensation create request for [{}]", compensation);
 
         return compensationService.createCompensation(compensation);
