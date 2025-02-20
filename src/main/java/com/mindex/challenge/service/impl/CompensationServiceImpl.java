@@ -1,9 +1,9 @@
 package com.mindex.challenge.service.impl;
 
 import com.mindex.challenge.dao.CompensationRepository;
+import com.mindex.challenge.dao.EmployeeRepository;
 import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.service.CompensationService;
-import com.mindex.challenge.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class CompensationServiceImpl implements CompensationService {
     private CompensationRepository compensationRepository;
 
     @Autowired
-    private EmployeeService employeeService;
+    private EmployeeRepository employeeRepository;
 
     /**
      * Creates a new compensation.
@@ -38,7 +38,7 @@ public class CompensationServiceImpl implements CompensationService {
 
         // If we can assume that Compensation can not be created unless the employee id is associated with an existing employee, validate the employee id
         try {
-            employeeService.getEmployee(compensation.getEmployeeId());
+            employeeRepository.findByEmployeeId(compensation.getEmployeeId());
         } catch (IllegalArgumentException e) {
             LOG.error(e.getMessage());
         }
