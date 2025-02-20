@@ -51,12 +51,14 @@ public class EmployeeServiceImplTest {
         // Create checks
         Employee createdEmployee = restTemplate.postForEntity(employeeUrl, testEmployee, Employee.class).getBody();
 
+        assertNotNull(createdEmployee);
         assertNotNull(createdEmployee.getEmployeeId());
         assertEmployeeEquivalence(testEmployee, createdEmployee);
 
 
         // Read checks
         Employee readEmployee = restTemplate.getForEntity(employeeIdUrl, Employee.class, createdEmployee.getEmployeeId()).getBody();
+        assertNotNull(readEmployee);
         assertEquals(createdEmployee.getEmployeeId(), readEmployee.getEmployeeId());
         assertEmployeeEquivalence(createdEmployee, readEmployee);
 
@@ -74,12 +76,16 @@ public class EmployeeServiceImplTest {
                         Employee.class,
                         readEmployee.getEmployeeId()).getBody();
 
+        assertNotNull(updatedEmployee);
         assertEmployeeEquivalence(readEmployee, updatedEmployee);
     }
+
+    // Unit Tests
 
     @Test
     public void testInvalidEmployee() {
         // Test that attempting to get reporting structure with an invalid employee id throws an exception
+        // Call with the service directly so we can pass an invalid id in
         assertThrows(RuntimeException.class, () ->
             employeeService.getReportingStructure("an-invalid-id"));
     }

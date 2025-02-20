@@ -1,7 +1,7 @@
 package com.mindex.challenge.data;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Represents compensation details.
@@ -12,7 +12,7 @@ public class Compensation {
 
     private BigDecimal salary;
 
-    private Date effectiveDate;
+    private LocalDate effectiveDate;
 
     public Compensation() {
     }
@@ -33,11 +33,11 @@ public class Compensation {
         this.salary = salary;
     }
 
-    public Date getEffectiveDate() {
+    public LocalDate getEffectiveDate() {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(Date effectiveDate) {
+    public void setEffectiveDate(LocalDate effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 }
