@@ -37,10 +37,9 @@ public class CompensationServiceImpl implements CompensationService {
         LOG.debug("Creating compensation [{}]", compensation);
 
         // If we can assume that Compensation can not be created unless the employee id is associated with an existing employee, validate the employee id
-        try {
-            employeeRepository.findByEmployeeId(compensation.getEmployeeId());
-        } catch (IllegalArgumentException e) {
-            LOG.error(e.getMessage());
+        String employeeId = compensation.getEmployeeId();
+        if (employeeRepository.findByEmployeeId(employeeId) == null) {
+            throw new IllegalArgumentException("No employee with employee id: " + employeeId);
         }
 
         // Validate that salary input is a positive number
