@@ -25,6 +25,12 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    /**
+     * Retrieves employee by employee id.
+     *
+     * @param employeeId The employee id of the employee to retrieve.
+     * @return The employee with the associated employee id.
+     */
     @GetMapping("/employee/{employeeId}")
     public Employee getEmployee(@PathVariable String employeeId) {
         LOG.debug("Received employee get request for id [{}]", employeeId);
@@ -32,6 +38,12 @@ public class EmployeeController {
         return employeeService.getEmployee(employeeId);
     }
 
+    /**
+     * Retrieves reporting structure for the employee with the associated employee id.
+     *
+     * @param employeeId The employee id of the employee for which we are retrieving reporting structure.
+     * @return The reporting structure for the employee with the associated employee id.
+     */
     @GetMapping("/reportingStructure/{employeeId}")
     public ReportingStructure getReportingStructure(@PathVariable String employeeId) {
         LOG.debug("Received reporting structure get request for employee with id [{}]", employeeId);
@@ -39,6 +51,12 @@ public class EmployeeController {
         return employeeService.getReportingStructure(employeeId);
     }
 
+    /**
+     * Creates a new employee.
+     *
+     * @param employee The employee object containing the new employee data.
+     * @return The created employee.
+     */
     @PostMapping("/employee")
     public Employee createEmployee(@RequestBody Employee employee) {
         LOG.debug("Received employee create request for [{}]", employee);
@@ -46,6 +64,13 @@ public class EmployeeController {
         return employeeService.createEmployee(employee);
     }
 
+    /**
+     * Updates the employee with the associated employee id with the given employee data.
+     *
+     * @param employeeId The id of the employee to update.
+     * @param employee The employee data with which to update the original employee.
+     * @return The updated employee.
+     */
     @PutMapping("/employee/{employeeId}")
     public Employee updateEmployee(@PathVariable String employeeId, @RequestBody Employee employee) {
         LOG.debug("Received employee update request for id [{}] and employee [{}]", employeeId, employee);
